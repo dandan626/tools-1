@@ -1,0 +1,18 @@
+#!/bin/sh
+######################################
+# this is to show the board info     #
+######################################
+
+
+cd /sys/class/pal_bsp/pal_bsp/nvram/
+
+files=`ls .`
+format="%-20s\t%s\n"
+
+for file in $files
+do
+        export my_tmp_file=$file
+        content=`cat /sys/class/pal_bsp/pal_bsp/nvram/$my_tmp_file`
+        printf $format $file $content
+done
+
